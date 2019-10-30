@@ -15,6 +15,13 @@ https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', (resp) => {
     console.log(JSON.parse(data).explanation);
     console.log('---\nprinting the \'MYVAR\' env var:');
     console.log(process.env.MYVAR);
+    console.log('---\nprinting the cli args:');
+    for (let index in process.argv) {
+      if (index < 2) {
+        continue;
+      }
+      console.log(process.argv[index]);
+    }
   });
 
 }).on("error", (err) => {
